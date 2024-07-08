@@ -53,8 +53,17 @@ public class CarShowRoomApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		List<Car> carList = Arrays.asList(
-				new Car(),
-				new Car()
+				new Car("Ford","Mustang","Red","FM_23434",2022,48000),
+				new Car("Toyota","Highlander","White","TH_12435",2023,52000),
+				new Car("Toyota","Camry","Black","TC_33444",2023,37000),
+				new Car("Tesla","Model Y","Red","TX_35634",2024,98000),
+				new Car("Benz","C-150","Gray","BC_89767",2024,148000)
+
 		);
+		carRepository.saveAll(carList);
+
+		for (Car car : carRepository.findAll()) {
+			logger.info(car.getMake() + " "+ car.getModel());
+		}
 	}
 }

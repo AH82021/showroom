@@ -6,9 +6,11 @@ import jakarta.persistence.*;
 public class Car {
 @Id
 // GenerationType.AUTO vs GenerationType.IDENTITY vs GenerationType.TABLE
-@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "my_sequence")
-@SequenceGenerator(name = "my_sequence",sequenceName = "my_sequence",
-allocationSize = 5) // postgres or Oracle database
+//@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "my_sequence")
+////@SequenceGenerator(name = "my_sequence",sequenceName = "my_sequence",
+////allocationSize = 5) //
+// postgres or Oracle database
+@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String make;
     private String model;
