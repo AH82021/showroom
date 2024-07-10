@@ -23,4 +23,19 @@ public class CarController {
     public ResponseEntity<List<Car>> getCarListByMake(@PathVariable String make){
         return new ResponseEntity<>(carService.getAllByMake(make), HttpStatus.OK);
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<Car>> getAllCars(){
+
+        return new ResponseEntity<>(carService.getAllCars(),HttpStatus.OK);
+    }
+
+    @GetMapping("id/{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable Long id){
+
+        return new ResponseEntity<>(carService.getCarById(id),HttpStatus.OK);
+
+    }
+
+
+
 }
