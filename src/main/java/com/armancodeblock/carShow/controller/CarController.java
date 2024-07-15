@@ -4,10 +4,7 @@ import com.armancodeblock.carShow.entity.Car;
 import com.armancodeblock.carShow.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,9 +30,22 @@ public class CarController {
     public ResponseEntity<Car> getCarById(@PathVariable Long id){
 
         return new ResponseEntity<>(carService.getCarById(id),HttpStatus.OK);
-
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<Car> saveCar(@RequestBody  Car car){
 
+        return new ResponseEntity<>(carService.saveCar(car),HttpStatus.CREATED);
+    }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car car){
+
+        return new ResponseEntity<>(carService.updateCarById(id,car),HttpStatus.ACCEPTED);
+    }
+ @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteCar(@PathVariable Long id) {
+     carService.deleteCarById(id);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

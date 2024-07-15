@@ -97,4 +97,8 @@ public class Car {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
